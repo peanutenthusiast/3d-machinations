@@ -11,10 +11,17 @@ class Cuboid
 
   def move_to!(x, y, z)
     to_move = [x, y, z]
-    @origin.merge!(to_move) {}
+    0.upto(2) {|index| @origin[index] += to_move[index]}
+    @origin
   end
   
   def vertices
+    to_fill = [0, 1].repeated_permutation(3).to_a
+    to_fill.map do |vertex|
+      vertex[0] = @width if vertex[0] == 1
+      vertex[1] = @height if vertex[1] == 1
+      vertex[2] = @length if vertex[2] == 1
+    end
   end
   
   #returns true if the two cuboids intersect each other.  False otherwise.

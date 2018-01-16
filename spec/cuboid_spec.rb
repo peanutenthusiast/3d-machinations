@@ -6,14 +6,16 @@ require 'cuboid'
 describe Cuboid do
   let(:cube) {Cuboid.new(7, 7, 7)}
 
-  describe "#orgin" do
+  describe "#origin" do
     it "has an origin" do
       expect(cube.origin).to eq [0, 0, 0]
     end
   end
+
   describe "move_to" do
     it "changes the origin in the simple happy case" do
-      expect(subject.move_to!(1,2,3)).to be true
+      expect(cube.move_to!(1,2,3)).to eq [1, 2, 3]
+      expect(cube.move_to!(2,4,9)).to eq [3, 6, 12]
     end
   end    
   
