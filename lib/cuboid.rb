@@ -16,12 +16,12 @@ class Cuboid
   end
   
   def vertices
-    to_fill = [0, 1].repeated_permutation(3).to_a
-    to_fill.map do |vertex|
-      vertex[0] = @width if vertex[0] == 1
-      vertex[1] = @height if vertex[1] == 1
-      vertex[2] = @length if vertex[2] == 1
+    list = [0, 1].repeated_permutation(3).to_a
+    dimensions = [@width, @height, @length]
+    list.map do |vertex|
+      0.upto(vertex.length - 1) {|i| vertex[i] = vertex[i] == 1 ? @origin[i] + dimensions[i] : @origin[i]}
     end
+    list
   end
   
   #returns true if the two cuboids intersect each other.  False otherwise.
