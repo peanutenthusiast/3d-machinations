@@ -32,6 +32,7 @@ describe Cuboid do
   end
   
   describe "intersects?" do
+    let(:other) {Cuboid.new([1, 1, 1], 9, 8, 7)}
   end
 
 end
