@@ -42,6 +42,5 @@ class Cuboid
     return false
   end
 
-  
   #END public methods that should be your starting point  
 end

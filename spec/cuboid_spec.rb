@@ -4,7 +4,7 @@ require 'cuboid'
 #  Do whatever you need to do to make it work and please add your own test cases for as many
 #  methods as you feel need coverage
 describe Cuboid do
-  let(:cube) {Cuboid.new(7, 8, 9)}
+  let!(:cube) {Cuboid.new(7, 8, 9)}
 
   describe "#origin" do
     it "has an origin" do
@@ -32,7 +32,24 @@ describe Cuboid do
   end
   
   describe "intersects?" do
-    let(:other) {Cuboid.new([1, 1, 1], 9, 8, 7)}
+    let(:other) {Cuboid.new(3, 6, 7)}
+    let(:another) {Cuboid.new([10, 10, 10], 1, 2, 3)}
+
+    it "returns true for overlapping x coords" do
+      expect(cube.intersects?(other)).to be true
+    end
+  
+    it "returns true for overlapping y coords" do
+      expect(cube.intersects?(other)).to be true 
+    end
+
+    it "returns true for overlapping z coords" do
+      expect(cube.intersects?(other)).to be true
+    end
+
+    it "returns false when there's no overlap" do
+      expect(cube.intersects?(another)).to be false
+    end
   end
 
 end
